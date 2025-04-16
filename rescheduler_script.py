@@ -334,6 +334,14 @@ def main(vacation_dates_str: str = Field(description="Comma-separated list of va
         log("error", f"An unexpected error occurred: {e}")
 
     finally:
+        # Ensure token.json is erased from disk
+        if os.path.exists('token.json'):
+            try:
+                os.remove('token.json')
+                log("info", "token.json has been successfully deleted.")
+            except Exception as e:
+                log("error", f"Failed to delete token.json: {e}")
+
         # Return all collected log messages as a single string
         return "\n".join(log_messages)
 
