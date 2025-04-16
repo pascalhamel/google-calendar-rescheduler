@@ -12,7 +12,7 @@ This project is a Python script designed to reschedule Google Calendar meetings 
 1. Python 3.7 or higher.
 2. Required Python packages (install using `pip install -r requirements.txt`).
 4. Environment variables:
-   - `GOOGLE_CLIENT_CONFIG`: JSON string containing Google client configuration.
+   - `SCOUT_CONTEXT`: JSON string containing Google client configuration and Google token configuration.
    - `SCOUT_API_URL` and `SCOUT_API_ACCESS_TOKEN` for ScoutAPI integration.
 
 ## Installation

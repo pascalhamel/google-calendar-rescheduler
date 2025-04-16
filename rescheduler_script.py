@@ -21,6 +21,21 @@ scout_api = ScoutAPI() # Ensure SCOUT_API_URL and SCOUT_API_ACCESS_TOKEN are set
 def get_google_calendar_service():
     """Authenticates and returns a Google Calendar API service object."""
     creds = None
+
+    # Check if GOOGLE_TOKEN_JSON environment variable exists
+    google_token_json = scout.context.get('GOOGLE_TOKEN_JSON')
+    if google_token_json:
+        try:
+            # Serialize the dictionary to a JSON string if it's not already a string
+            if isinstance(google_token_json, dict):
+                google_token_json = json.dumps(google_token_json)
+            with open('token.json', 'w') as token_file:
+                token_file.write(google_token_json)
+            logging.info("GOOGLE_TOKEN_JSON environment variable found and written to token.json.")
+        except Exception as e:
+            logging.error(f"Failed to write GOOGLE_TOKEN_JSON to token.json: {e}")
+            return None
+
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
