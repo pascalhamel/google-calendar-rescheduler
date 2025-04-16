@@ -4,7 +4,6 @@ credentials.json
 *.log
 *.pyc
 __pycache__/
-*.md
 .vscode/
 .DS_Store
 .venv/
