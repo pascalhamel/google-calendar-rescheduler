@@ -237,7 +237,7 @@ def get_meeting_duration(event):
     return int(duration)
 
 @scout.function(description="Reschedule meetings for multiple vacation days")
-def main(vacation_dates_str: str = Field(description="Comma-separated list of vacation dates"), 
+def reschedule_meetings(vacation_dates_str: str = Field(description="Comma-separated list of vacation dates"), 
          acceptable_dates_str: str = Field(description="Comma-separated list of acceptable dates"), 
          time_slot_start_str: str = Field(description="Earliest hour at which the meeting can be rescheduled"), 
          time_slot_end_str: str = Field(description="Latest hour at which the meeting can be rescheduled"),
@@ -363,4 +363,4 @@ if __name__ == '__main__':
     else:
         logging.getLogger().setLevel(logging.INFO)
 
-    print(main(args.vacation_dates, args.acceptable_dates, args.time_slot_start, args.time_slot_end, args.dry_run))
+    print(reschedule_meetings(args.vacation_dates, args.acceptable_dates, args.time_slot_start, args.time_slot_end, args.dry_run))
